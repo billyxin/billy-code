@@ -1,13 +1,10 @@
-const {spawn}= require('child_process');
-const { stringify } = require('querystring');
-let run = spawn('./dist/test.exe', ['aaa', 'bbb']);
+const { spawn } = require('child_process');
+const iconv = require('iconv-lite');
+let run = spawn('py', ['test.py', 'aaa', 'bbb']);
 run.stdout.on('data', (data) => {
-	console.log('get data');
-	// console.log(data.toString());
-	console.log(data.toString())
-	
-	
-})
+	data = iconv.decode(data, 'cp936');
+	console.log(data.toString());
+});
 run.on('close', (data) => {
-	console.log('close')
-  })
+	console.log('close');
+});
