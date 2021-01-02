@@ -39,6 +39,7 @@ print('*'*28)
 print(dir(animal))
 
 dir(animal)
+print('aaaaaaaaaaaaaaa')
 # ['__class__',
 #  '__delattr__',
 #  '__dict__',
