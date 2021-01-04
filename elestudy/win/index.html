@@ -5,7 +5,7 @@
 		<title>Hello World!</title>
 	</head>
 	<body>
-		home
+		<div id="home"></div>
 		<br />
 		[cwd]<div id="cwd"></div> [real]<div class="real"></div> [execPath ]<div class="execPath"></div> [execPath
 		2]<div class="execPath2"></div>
@@ -42,6 +42,12 @@
 			$('.real').text(real_path);
 			// $('.execPath').text(execPath);
 			$('.execPath2').text(execPath2);
+
+			if(process.env.NODE_ENV == 'DEV')
+				$('#home').text('DEV');
+			else if(process.env.NODE_ENV == 'PROD')
+				$('#home').text('PROD');
+
 		</script>
 
 		<script src="./renderer.js"></script>

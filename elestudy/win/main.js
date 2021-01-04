@@ -1,4 +1,4 @@
-
+// process.env.NODE_ENV = 'DEV';
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
