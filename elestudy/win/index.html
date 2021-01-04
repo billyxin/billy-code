@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Hello World!</title>
+	</head>
+	<body>
+		home
+		<br />
+		[cwd]<div id="cwd"></div> [real]<div class="real"></div> [execPath ]<div class="execPath"></div> [execPath
+		2]<div class="execPath2"></div>
+		<br />
+		<textarea id="json"></textarea>
+		<textarea id="real2"></textarea>
+		<script>
+			window.$ = window.jquery = window.jQuery = require('jquery');
+			const { remote } = require('electron');
+			const fs = require('fs');
+			const path = require('path');
+
+			let data = fs.readFileSync(path.join(__dirname, './../package.json'));
+			data = data.toString();
+
+			let j = JSON.parse(data);
+			data = j['name'];
+			//path
+			let cwd = process.cwd();
+			let real_path  =process.env.PORTABLE_EXECUTABLE_DIR;
+			// let execPath = path.dirname(remote.getPath('exe'));
+			let execPath2 = path.dirname(process.execPath);
+			
+			console.log(data);
+
+			console.log('--------------from index.html--------');
+
+			console.log('cwd found in index.html', cwd);
+			console.log('this is a message from index.html');
+			// alert('aa')
+			$('#json').val(data);
+			$('#real2').val(real_path);
+			$('#cwd').text(cwd);
+			$('.real').text(real_path);
+			// $('.execPath').text(execPath);
+			$('.execPath2').text(execPath2);
+		</script>
+
+		<script src="./renderer.js"></script>
+	</body>
+</html>

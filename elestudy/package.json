@@ -1,0 +1,27 @@
+{
+	"name": "elestudy",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./win/main.js",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"electron": "^11.1.1",
+		"electron-builder": "^22.9.1"
+	},
+	"dependencies": {
+		"jquery": "^3.5.1"
+	},
+	"build": {
+		"productName": "elestudy",
+		"appId": "com.elestudy.test",
+		"win":{
+			"target":["portable"]
+		}
+	},
+	"scripts": {
+		"start": "electron ./win/main.js",
+		"build": "electron-builder --win --x64"
+	}
+}
