@@ -10,68 +10,12 @@
 		----------env----------
 
 		<br />
-		[cwd]<div id="cwd"></div> [real]<div class="real"></div>
+		[cwd]<div id="cwd"></div> [real]<div id="real"></div>
 		<br />
-		<textarea id="json"></textarea>
-		<textarea id="real2"></textarea>
-		<script>
-			window.$ = window.jquery = window.jQuery = require('jquery');
-			const { remote, ipcRenderer } = require('electron');
-			const fs = require('fs');
-			const path = require('path');
-			$(() => {
-				ipcRenderer.on('mode', (event, msg) => {
-					$('#home3').text(msg);
-				});
-
-				let data = fs.readFileSync(path.join(__dirname, './../package.json'));
-				data = data.toString();
-
-				let j = JSON.parse(data);
-				data = j['name'];
-				//path
-				let cwd = process.cwd();
-				let real_path = process.env.PORTABLE_EXECUTABLE_DIR;
-				// let execPath = path.dirname(remote.getPath('exe'));
-				// let execPath2 = path.dirname(process.execPath);
-
-				console.log(data);
-
-				console.log('--------------from index.html--------');
-
-
-				$('#json').val(data);
-				$('#real').val(real_path);
-				$('#cwd').text(cwd);
-
-				// $('.execPath2').text(execPath2);
-				// alert(process.env.NODE_ENV)
-
-				$('#home2').text(process.env.NODE_ENV);
-
-				alert(typeof process.env.NODE_ENV);
-				alert(process.env.NODE_ENV);
-
-				console.log(process.env.NODE_ENV);
-				console.log(process.env.NODE_ENV.length);
-				
-
-
-				// console.log(process.env.);
-
-				if (process.env.NODE_ENV === 'dev') {
-					console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-					alert('dev');
-					$('#home').text('dev');
-				} else if (process.env.NODE_ENV === 'product') {
-					$('#home').text('product');
-				} else {
-					alert('not any env');
-					alert(process.env.NODE_ENV);
-				}
-			});
-		</script>
-
+		<textarea id="jsonname"></textarea>
+		<textarea id="realarea"></textarea>
+		<h1></h1>
+		<img src ="../../images/a.jpg">
 		<script src="./renderer.js"></script>
 	</body>
 </html>
