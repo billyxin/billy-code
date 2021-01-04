@@ -5,49 +5,71 @@
 		<title>Hello World!</title>
 	</head>
 	<body>
-		<div id="home"></div>
+		----------env----------<br />
+		home:<div id="home"></div> home2:<div id="home2"></div> home3:<div id="home3"></div>
+		----------env----------
+
 		<br />
-		[cwd]<div id="cwd"></div> [real]<div class="real"></div> [execPath ]<div class="execPath"></div> [execPath
-		2]<div class="execPath2"></div>
+		[cwd]<div id="cwd"></div> [real]<div class="real"></div>
 		<br />
 		<textarea id="json"></textarea>
 		<textarea id="real2"></textarea>
 		<script>
 			window.$ = window.jquery = window.jQuery = require('jquery');
-			const { remote } = require('electron');
+			const { remote, ipcRenderer } = require('electron');
 			const fs = require('fs');
 			const path = require('path');
+			$(() => {
+				ipcRenderer.on('mode', (event, msg) => {
+					$('#home3').text(msg);
+				});
 
-			let data = fs.readFileSync(path.join(__dirname, './../package.json'));
-			data = data.toString();
+				let data = fs.readFileSync(path.join(__dirname, './../package.json'));
+				data = data.toString();
 
-			let j = JSON.parse(data);
-			data = j['name'];
-			//path
-			let cwd = process.cwd();
-			let real_path  =process.env.PORTABLE_EXECUTABLE_DIR;
-			// let execPath = path.dirname(remote.getPath('exe'));
-			let execPath2 = path.dirname(process.execPath);
-			
-			console.log(data);
+				let j = JSON.parse(data);
+				data = j['name'];
+				//path
+				let cwd = process.cwd();
+				let real_path = process.env.PORTABLE_EXECUTABLE_DIR;
+				// let execPath = path.dirname(remote.getPath('exe'));
+				// let execPath2 = path.dirname(process.execPath);
 
-			console.log('--------------from index.html--------');
+				console.log(data);
 
-			console.log('cwd found in index.html', cwd);
-			console.log('this is a message from index.html');
-			// alert('aa')
-			$('#json').val(data);
-			$('#real2').val(real_path);
-			$('#cwd').text(cwd);
-			$('.real').text(real_path);
-			// $('.execPath').text(execPath);
-			$('.execPath2').text(execPath2);
+				console.log('--------------from index.html--------');
 
-			if(process.env.NODE_ENV == 'DEV')
-				$('#home').text('DEV');
-			else if(process.env.NODE_ENV == 'PROD')
-				$('#home').text('PROD');
 
+				$('#json').val(data);
+				$('#real').val(real_path);
+				$('#cwd').text(cwd);
+
+				// $('.execPath2').text(execPath2);
+				// alert(process.env.NODE_ENV)
+
+				$('#home2').text(process.env.NODE_ENV);
+
+				alert(typeof process.env.NODE_ENV);
+				alert(process.env.NODE_ENV);
+
+				console.log(process.env.NODE_ENV);
+				console.log(process.env.NODE_ENV.length);
+				
+
+
+				// console.log(process.env.);
+
+				if (process.env.NODE_ENV === 'dev') {
+					console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+					alert('dev');
+					$('#home').text('dev');
+				} else if (process.env.NODE_ENV === 'product') {
+					$('#home').text('product');
+				} else {
+					alert('not any env');
+					alert(process.env.NODE_ENV);
+				}
+			});
 		</script>
 
 		<script src="./renderer.js"></script>
