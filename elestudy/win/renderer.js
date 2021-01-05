@@ -2,12 +2,21 @@ window.$ = window.jquery = window.jQuery = require('jquery');
 const { remote, ipcRenderer } = require('electron');
 const fs = require('fs');
 const path = require('path');
+
+let root_path, app_path;
+
+if (process.env.NODE_ENV == 'product') {
+	root_path = process.cwd();
+	app_path = path.resolve(root_path, './resources/app/');
+} else {
+	root_path = path.resolve(__dirname, './../');
+	app_path = root_path;
+}
+
 $(() => {
 	console.log('--------------from index.html--------');
 
-	ipcRenderer.on('mode', (event, msg) => {
-		$('#home3').text(msg);
-	});
+	$('#mypic').attr('src', app_path + '/images/a.jpg');
 
 	// json package name
 	let data = fs.readFileSync(path.join(__dirname, './../package.json'));
@@ -19,19 +28,11 @@ $(() => {
 
 	$('#jsonname').val(data);
 
-	$('#real').text(real_path);
-	$('#realarea').val(real_path);
+	$('#home').text(process.env.NODE_ENV);
+
 	$('#cwd').text(cwd);
-	$('#home2').text(process.env.NODE_ENV);
+	$('#port').text(real_path);
+	$('#portarea').val(real_path);
 
-	if (process.env.NODE_ENV === 'dev') {
-		$('#home').text('dev');
-	} else if (process.env.NODE_ENV === 'product') {
-		$('#home').text('product');
-	} else {
-		alert('not any env');
-		alert(process.env.NODE_ENV);
-	}
-
-	$('h1').text('这里h1111')
+	$('h1').text('这里h1111');
 });

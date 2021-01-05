@@ -14,18 +14,12 @@
 		"jquery": "^3.5.1"
 	},
 	"build": {
-		"appId": "com.billyxin.${name}",
-		"artifactName": "${name}-${os}-${arch}-${version}.${ext}",
-		"copyright": "copyrights reserved ${author}",
 		"asar": false,
 		"win": {
-			"target": [
-				"portable"
-			],
+			"target": "portable",
 			"icon": "billy.ico"
 		},
 		"files": [
-			"!**/*.jpg",
 			"!./doc/*"
 		]
 	},
