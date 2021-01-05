@@ -33,5 +33,5 @@ $(() => {
 		alert(process.env.NODE_ENV);
 	}
 
-	$('h1').text('这里h1')
+	$('h1').text('这里h1111')
 });
