@@ -1,5 +1,5 @@
 // process.env.NODE_ENV = 'DEV';
-const {ipcMain, app, BrowserWindow } = require('electron');
+const { ipcMain, app, BrowserWindow } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -21,12 +21,11 @@ function createWindow() {
 		console.log('ready-to-show');
 		let cwd = process.cwd();
 		console.log('cwd is:---->', cwd);
-		console.log('ENV:------->',process.env.NODE_ENV);
+		console.log('ENV:------->', process.env.NODE_ENV);
 		// console.log('from package:------->',npm_lifecyle_event);
-		mainWindow.webContents.send('mode',process.env.NODE_ENV)
-		
+		mainWindow.webContents.send('mode', process.env.NODE_ENV);
 	});
-	mainWindow.webContents.on('console-message', (sender,level,message) => {
+	mainWindow.webContents.on('console-message', (sender, level, message) => {
 		console.log(message);
 	});
 
