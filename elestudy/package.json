@@ -14,43 +14,25 @@
 		"jquery": "^3.5.1"
 	},
 	"build": {
-		"productName": "elestudy2233",
-		"appId": "com.elestudy.test",
-		"copyright": "copyrights reserved",
-		"asar": true,
+		"appId": "com.billyxin.${name}",
+		"artifactName": "${name}-${os}-${arch}-${version}.${ext}",
+		"copyright": "copyrights reserved ${author}",
+		"asar": false,
 		"win": {
 			"target": [
 				"portable"
 			],
 			"icon": "billy.ico"
 		},
-		"extraFiles": [
-			{
-				"from": "./dict.txt2",
-				"to": "./dict.txt"
-			}
-		],
-		"extraResources": [
-			{
-				"from": "./images",
-				"to": "./images"
-			},
-			{
-				"from": "./",
-				"to": "./",
-				"filter": [
-					"dict.txt"
-				]
-			}
-		],
 		"files": [
 			"!**/*.jpg",
 			"!./doc/*"
 		]
 	},
 	"scripts": {
-		"start": "set NODE_ENV=product&&electron ./win/main.js",
-		"dev": "set NODE_ENV=dev&&electron ./win/main.js",
-		"build": "set NODE_ENV=product&&electron-builder --win --x64 --dir"
+		"start": "npm run dev",
+		"dev": "electron ./win/main.js",
+		"dir": "set NODE_ENV=product&&electron-builder --win --x64 --dir",
+		"exe": "set NODE_ENV=product&&electron-builder --win --x64 "
 	}
 }
