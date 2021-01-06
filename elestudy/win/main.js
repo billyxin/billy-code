@@ -1,7 +1,7 @@
 // process.env.NODE_ENV = 'DEV';
 const { ipcMain, app, BrowserWindow } = require('electron');
 const path = require('path');
-
+process.env.ELECTRON_ENABLE_SECURITY_WARNINGS = false;
 function createWindow() {
 	// Create the browser window.
 	const mainWindow = new BrowserWindow({

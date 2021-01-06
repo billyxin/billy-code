@@ -2,7 +2,7 @@
 	"name": "elestudy",
 	"version": "1.0.0",
 	"description": "des",
-	"main": "./win/main.js",
+	"main": "./launch.js",
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -31,7 +31,7 @@
 	"scripts": {
 		"start": "npm run dev",
 		"dev": "electron ./win/main.js",
-		"dir": "set NODE_ENV=product&&electron-builder --win --x64 --dir",
-		"exe": "set NODE_ENV=product&&electron-builder --win --x64 "
+		"dir": "electron-builder --win --x64 --dir",
+		"exe": "electron-builder --win --x64 "
 	}
 }
