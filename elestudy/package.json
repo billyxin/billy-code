@@ -25,13 +25,16 @@
 			"icon": "billy.ico"
 		},
 		"files": [
-			"!./doc/*"
-		]
+			"**/*",
+			"!doc/*",
+			"!.vscode/*"
+		],
+		"npmArgs":"--win --x64"
 	},
 	"scripts": {
 		"start": "npm run dev",
 		"dev": "electron ./win/main.js",
-		"dir": "electron-builder --win --x64 --dir",
-		"exe": "electron-builder --win --x64 "
+		"dir": "electron-builder --dir",
+		"exe": "electron-builder"
 	}
 }

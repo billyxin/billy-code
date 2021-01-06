@@ -5,18 +5,18 @@ const path = require('path');
 
 let root_path, app_path;
 
-if (process.env.NODE_ENV == 'product') {
 	root_path = process.cwd();
 	app_path = path.resolve(root_path, './resources/app/');
-} else {
-	root_path = path.resolve(__dirname, './../');
-	app_path = root_path;
-}
+// if (process.env.NODE_ENV == 'product') {
+// } else {
+// 	root_path = path.resolve(__dirname, './../');
+// 	app_path = root_path;
+// }
 
 $(() => {
 	console.log('--------------from index.html--------');
 
-	$('#mypic').attr('src', app_path + '/images/a.jpg');
+	$('#mypic').attr('src', app_path + '/win/images/a.jpg');
 
 	// json package name
 	let data = fs.readFileSync(path.join(__dirname, './../package.json'));
