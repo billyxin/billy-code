@@ -13,7 +13,8 @@
 		"eslint-config-standard": "^16.0.2",
 		"eslint-plugin-import": "^2.22.1",
 		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^4.2.1"
+		"eslint-plugin-promise": "^4.2.1",
+		"javascript-obfuscator": "^2.10.1"
 	},
 	"dependencies": {
 		"jquery": "^3.5.1"
@@ -26,10 +27,12 @@
 		},
 		"files": [
 			"**/*",
+			"!obfs.js",
 			"!doc/*",
 			"!.vscode/*"
 		],
-		"npmArgs":"--win --x64"
+		"npmArgs": "--win --x64",
+		"afterAllArtifactBuild": "./obfs.js"
 	},
 	"scripts": {
 		"start": "npm run dev",
