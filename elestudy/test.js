@@ -1,28 +1,19 @@
-async function one() {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			console.log('11111111');
-			resolve('1 finished');
-		}, 300);
-	});
-}
-async function two() {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			console.log('22222');
-			resolve('2 finished');
-		}, 300);
-	});
-}
+class pp {
+	constructor() {
+		this.att = 'attr';
+	}
+	att3 = '3333'
 
-async function go() {
-	let oner = await one();
-	console.log(typeof oner);
-
-	console.log(oner);
-
-	let twor = await two();
-	console.log(twor);
+	// return 'bbbbbbb';
+		// console.log('bbbb');
+		
+	
 }
-// one().then(two())
-go();
+let p =  new pp();
+// console.log(p.att);
+
+
+pp.prototype.att2 = 'sssss2'
+
+console.log(p.__proto__.constructor.prototype);
+  
