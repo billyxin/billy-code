@@ -1,5 +1,4 @@
-*.idea/
-pycharmtest/.idea/workspace.xml
+**\.idea/**
 .vscode
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -257,4 +256,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-pycharmtest/.idea/workspace.xml
