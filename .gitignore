@@ -1,4 +1,5 @@
-*workspace.xml
+*.workspace.xml
+*.Project_Default.xml
 
 .vscode
 # Byte-compiled / optimized / DLL files
